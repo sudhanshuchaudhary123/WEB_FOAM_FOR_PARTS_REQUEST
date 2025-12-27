@@ -1635,11 +1635,9 @@
         </div>
 
         <div class="button-row">
-          <button type="submit" class="btn">ADD RECORD</button>
+          <button type="submit" class="btn">ADD RECORD</button>       
           
-          <button type="button" class="btn" onclick="console.log('Update clicked')">UPDATE</button>
-          <button type="button" class="btn" onclick="console.log('Search clicked')">SEARCH</button>
-          <button type="button" class="btn" onclick="clearForm()">CLEAR ALL</button>
+         <button type="button" class="btn" onclick="clearForm()">CLEAR ALL</button>
         </div>
       </form>
     </div>
@@ -1691,7 +1689,7 @@ document.getElementById('gwd').addEventListener('input', function() {
     e.preventDefault();
 
     const btn = document.querySelector('button[type="submit"]');
-    btn.textContent = "Saving to both sheets...";
+    btn.textContent = "Saving...";
     btn.disabled = true;
 
     // Create the data package once
@@ -1709,7 +1707,7 @@ document.getElementById('gwd').addEventListener('input', function() {
     // Send to both URLs at the same time
     Promise.all(requests)
       .then(() => {
-        alert("Data Saved Successfully to both locations!");
+        alert("Data Saved Successfully");
         btn.textContent = "ADD RECORD";
         btn.disabled = false;
         if (typeof clearForm === "function") clearForm(); 
