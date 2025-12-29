@@ -30,7 +30,7 @@
           
           <div class="label-box">TL NAME :-</div>
           <select id="tlName" name="tlName" class="select-field">
-            <option value="Team leader not Select"selected>Select Team Leader Name</option>
+            <option value=""selected>Select Team Leader Name</option>
             <option value="AMIT" >AMIT</option>
             <option value="SUDHANSHU CHAUDHARY">SUDHANSHU CHAUDHARY</option>
             <option value="SUMIT">SUMIT</option>
@@ -40,7 +40,7 @@
           <input type="text" id="sku" name="sku" class="input-field" readonly>
 
           <div class="label-box">ENGG.NAME :-</div>
-          <input type="text" id="enggName" name="enggName" class="input-field" value="SUDHANSHU">
+          <input type="text" id="enggName" name="enggName" class="input-field" value="">
 
           <div class="label-box">PART 1 :-</div>
           <select id="part1" name="part1" class="select-field">
@@ -294,7 +294,7 @@
           </select>
 
           <div class="label-box">ENGG. ID :-</div>
-          <input type="number" id="enggId" name="enggId" class="input-field" value="10001">
+          <input type="number" id="enggId" name="enggId" class="input-field" value="">
 
           <div class="label-box">PART 2 :-</div>
           <select id="part2" name="part2" class="select-field">
@@ -1636,8 +1636,7 @@
 
         <div class="button-row">
           <button type="submit" class="btn">ADD RECORD</button>       
-          
-         <button type="button" class="btn" onclick="clearForm()">CLEAR ALL</button>
+          <button type="button" class="btn" onclick="clearForm()">CLEAR ALL</button>
         </div>
       </form>
     </div>
@@ -1659,7 +1658,7 @@ document.getElementById('gwd').addEventListener('input', function() {
         const dateStr = now.toLocaleString('en-GB', {
             day: '2-digit', month: 'short', year: 'numeric',
             hour: '2-digit', minute: '2-digit', hour12: false 
-        }).replace(/ /g, '-').replace(',', '');
+        }).replace(/ /g, ' ').replace(',', '');
         
         document.getElementById('dateField').value = dateStr;
 
@@ -1679,14 +1678,49 @@ document.getElementById('gwd').addEventListener('input', function() {
     </script>
     <script>
   const scriptURLs = [
-    'https://script.google.com/macros/s/AKfycbzmQUlmTCSTryfnQsvsu1MohZQ611sanrMNXthKAmGiF-hKy_NQcNqA5ADA_LsthhCTUQ/exec',
-    'https://script.google.com/macros/s/AKfycbzuwNf4eGorXx3CW3VpkVTd3b9uemAdLk0s_M4UJYMBUSxs1OnUH7zGhwYc58fJUqfw/exec'
+    'https://script.google.com/macros/s/AKfycbwxLC1JzLwyeFryIHGqw7yu-6iyVskpph4hmBcNNaW4KxX1ilUF5XN0ExgW6K49C6Y/exec',
+    'https://script.google.com/macros/s/AKfycbzuwNf4eGorXx3CW3VpkVTd3b9uemAdLk0s_M4UJYMBUSxs1OnUH7zGhwYc58fJUqfw/exec',
+    'https://script.google.com/macros/s/AKfycbx40646RcSsJkhX0-udLkOj2j7QuDT6n6qd-Wja2UzHEJZQFaUg1fVYw1Uo_nWSI9Ot/exec'
   ];
 
   const form = document.getElementById('recordForm');
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
+
+    const enggNameInput = document.getElementById('enggName');
+    if (enggNameInput.value.trim() === "") {
+      alert("ENGG NAME EMPTY! Please enter a name before submitting.");
+      enggNameInput.focus(); // Puts the cursor back in the field
+      return;
+    }
+
+     const tlNameInput = document.getElementById('tlName');
+    if (tlNameInput.value.trim() === "") {
+      alert("TL NAME EMPTY! Please enter a name before submitting.");
+      tlNameInput.focus(); // Puts the cursor back in the field
+      return;
+    }
+    const gwdInput = document.getElementById('gwd');
+    if (gwdInput.value.trim() === "") {
+      alert("GWD EMPTY! Please enter GWD before submitting.");
+      gwdInput.focus(); // Puts the cursor back in the field
+      return;
+    }
+    const BrandINPUT = document.getElementById('brand');
+    if (BrandINPUT.value.trim() === "") {
+      alert("Brand EMPTY! Please enter brand before submitting.");
+      BrandINPUT.focus(); // Puts the cursor back in the field
+      return;
+    }
+    const modelINPUT = document.getElementById('model');
+    if (modelINPUT.value.trim() === "") {
+      alert("Model EMPTY! Please enter model before submitting.");
+      modelINPUT.focus(); // Puts the cursor back in the field
+      return;
+    }
+
+
 
     const btn = document.querySelector('button[type="submit"]');
     btn.textContent = "Saving...";
@@ -1720,7 +1754,5 @@ document.getElementById('gwd').addEventListener('input', function() {
   });
 </script>
 
-    
-  
   </body>
 </html>
